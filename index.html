@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Will You Be My Valentine 💖</title>
+<style>
+body{margin:0;height:100vh;display:flex;justify-content:center;align-items:center;
+background:linear-gradient(135deg,#ff4d6d,#ff8fab);font-family:Arial;color:white;overflow:hidden}
+.card{background:rgba(255,255,255,.15);padding:25px;border-radius:20px;
+width:90%;max-width:360px;text-align:center}
+img{width:100%;border-radius:15px;margin-bottom:15px}
+button{padding:10px 22px;border:none;border-radius:20px;font-size:16px;cursor:pointer;margin:8px}
+#yes{background:#00ffab;color:#000}
+#no{background:#ff2e63;color:#fff;position:absolute}
+</style>
+</head>
+<body>
+<div class="card">
+<img src="her1.jpg" id="photo">
+<h1>Will you be my Valentine? 💕</h1>
+<button id="yes" onclick="alert('Yay! I love you ❤️')">Yes 💖</button>
+<button id="no" onmouseover="moveNo()">No 😜</button>
+</div>
+<script>
+const photos=["her1.jpg","her2.jpg"];let i=0;
+function moveNo(){
+const n=document.getElementById("no");
+n.style.left=Math.random()*(innerWidth-100)+"px";
+n.style.top=Math.random()*(innerHeight-100)+"px";
+i=(i+1)%photos.length;
+document.getElementById("photo").src=photos[i];
+}
+</script>
+</body>
+</html>
