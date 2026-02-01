@@ -38,10 +38,11 @@ button{
 }
 #yes{background:#00ffab;}
 #no{background:#ff2e63;color:white;position:absolute;}
+
 .balloon{
   position:fixed;
-  bottom:-100px;
-  font-size:30px;
+  bottom:-80px;
+  font-size:32px;
   animation:fly 6s linear forwards;
 }
 @keyframes fly{
@@ -60,7 +61,7 @@ button{
 </div>
 
 <script>
-const photos=["her1.jpg.JPG","temp.jpg.JPG"];
+const photos=["her1.jpg.JPG","her2.jpg.JPG"];
 let i=0;
 
 document.getElementById("no").onmouseover=()=>{
@@ -69,20 +70,20 @@ document.getElementById("no").onmouseover=()=>{
   n.style.top=Math.random()*(innerHeight-100)+"px";
   i=(i+1)%photos.length;
   document.getElementById("photo").src=photos[i];
-}
+};
 
 document.getElementById("yes").onclick=()=>{
-  for(let j=0;j<60;j++){
+  for(let j=0;j<70;j++){
     const b=document.createElement("div");
     b.className="balloon";
-    b.innerHTML=["🎈","🎉","💖","💘","❤️"][Math.floor(Math.random()*5)];
+    b.innerHTML=["🎈","🎉","💖","💘","❤️","🥰"][Math.floor(Math.random()*6)];
     b.style.left=Math.random()*100+"vw";
     b.style.animationDuration=3+Math.random()*4+"s";
     document.body.appendChild(b);
     setTimeout(()=>b.remove(),7000);
   }
   alert("YAY!!! I LOVE YOU ❤️❤️❤️");
-}
+};
 </script>
 
 </body>
