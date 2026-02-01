@@ -3,33 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <title>Will You Be My Valentine 💖</title>
+
 <style>
-body{margin:0;height:100vh;display:flex;justify-content:center;align-items:center;
-background:linear-gradient(135deg,#ff4d6d,#ff8fab);font-family:Arial;color:white;overflow:hidden}
-.card{background:rgba(255,255,255,.15);padding:25px;border-radius:20px;
-width:90%;max-width:360px;text-align:center}
-img{width:100%;border-radius:15px;margin-bottom:15px}
-button{padding:10px 22px;border:none;border-radius:20px;font-size:16px;cursor:pointer;margin:8px}
-#yes{background:#00ffab;color:#000}
-#no{background:#ff2e63;color:#fff;position:absolute}
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ff4d6d,#ffb3c6);
+  overflow:hidden;
+  font-family:Arial, sans-serif;
+}
+.card{
+  background:white;
+  padding:20px;
+  border-radius:20px;
+  text-align:center;
+  width:90%;
+  max-width:360px;
+  z-index:2;
+}
+img{
+  width:100%;
+  border-radius:15px;
+}
+button{
+  padding:12px 25px;
+  margin:10px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  cursor:pointer;
+}
+#yes{background:#00ffab;}
+#no{background:#ff2e63;color:white;position:absolute;}
+.balloon{
+  position:fixed;
+  bottom:-100px;
+  font-size:30px;
+  animation:fly 6s linear forwards;
+}
+@keyframes fly{
+  to{transform:translateY(-120vh);opacity:0;}
+}
 </style>
 </head>
+
 <body>
+
 <div class="card">
-<img src="her1.jpg.JPG" id="photo">
-<h1>Will you be my Valentine? 💕</h1>
-<button id="yes" onclick="alert('Yay! I love you ❤️')">Yes 💖</button>
-<button id="no" onmouseover="moveNo()">No 😜</button>
+  <img src="her1.jpg.JPG" id="photo">
+  <h2>Will you be my Valentine? 💕</h2>
+  <button id="yes">YES 😍</button>
+  <button id="no">NO 😜</button>
 </div>
+
 <script>
-const photos=["her1.jpg.JPG","temp.jpg.JPG"];let i=0;
-function moveNo(){
-const n=document.getElementById("no");
-n.style.left=Math.random()*(innerWidth-100)+"px";
-n.style.top=Math.random()*(innerHeight-100)+"px";
-i=(i+1)%photos.length;
-document.getElementById("photo").src=photos[i];
+const photos=["her1.jpg.JPG","temp.jpg.JPG"];
+let i=0;
+
+document.getElementById("no").onmouseover=()=>{
+  const n=document.getElementById("no");
+  n.style.left=Math.random()*(innerWidth-100)+"px";
+  n.style.top=Math.random()*(innerHeight-100)+"px";
+  i=(i+1)%photos.length;
+  document.getElementById("photo").src=photos[i];
+}
+
+document.getElementById("yes").onclick=()=>{
+  for(let j=0;j<60;j++){
+    const b=document.createElement("div");
+    b.className="balloon";
+    b.innerHTML=["🎈","🎉","💖","💘","❤️"][Math.floor(Math.random()*5)];
+    b.style.left=Math.random()*100+"vw";
+    b.style.animationDuration=3+Math.random()*4+"s";
+    document.body.appendChild(b);
+    setTimeout(()=>b.remove(),7000);
+  }
+  alert("YAY!!! I LOVE YOU ❤️❤️❤️");
 }
 </script>
+
 </body>
 </html>
